@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import pl.edu.agh.mwo.invoice.product.Product;
 
@@ -52,5 +53,11 @@ public class Invoice {
 
 	public int getNumber() {
 		return invoiceNumber;
+	}
+	
+	public String printInvoice() {
+		return invoiceNumber + " " + products.keySet().stream()
+				.map(n -> String.format("\n%s %d %s", n.getName(), products.get(n), n.getPrice()))
+				.collect(Collectors.joining("\n")) + " Liczba pozycji: " + products.size();
 	}
 }

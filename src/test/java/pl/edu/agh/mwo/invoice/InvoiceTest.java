@@ -131,4 +131,18 @@ public class InvoiceTest {
 		
 		Assert.assertEquals(invoice1.getNumber(), invoice2.getNumber() - 1);
 	}
+	
+	@Test
+	public void testPrintedInvoiceHasNumber() {
+		String printed = invoice.printInvoice();
+		String number = String.valueOf(invoice.getNumber());
+		Assert.assertThat(printed, Matchers.containsString(number));
+	}
+	
+	@Test
+	public void testPrintedInvoiceHasProductName() {
+		String printed = invoice.printInvoice();
+		String number = String.valueOf(invoice.getNumber());
+		Assert.assertThat(printed, Matchers.containsString(number));
+	}
 }
